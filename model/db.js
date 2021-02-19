@@ -27,4 +27,9 @@ process.on('SIGINT', () => {
     });
 });
 
-//require model classes
+require('./admin');
+require('./guest');
+require('./hotel');
+require('./manager');
+require('./room');
+require('./user');
