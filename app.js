@@ -7,21 +7,9 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
-// const swaggerJSDoc = require('swagger-jsdoc');
-// // import swaggerJSDoc from 'swagger-jsdoc';
-// const swaggerDefinition = {
-// openapi: '3.0.0',
-// info: {
-// title: 'Express API to manage students',
-// version: '1.0.0',
-// },
-// };
-// const options = {
-// swaggerDefinition,
-// Paths to files containing OpenAPI definitions
-// apis: ['./routes/*.js'],
-// };
-// const swaggerSpec = swaggerJSDoc(options);
+var swaggerUi = require('swagger-ui-express');
+app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
 
 var app = express();
 
