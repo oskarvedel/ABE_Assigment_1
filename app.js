@@ -7,15 +7,14 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
-//swagger requires
+//swagger setup
 var swaggerUi = require('swagger-ui-express');
 const swaggerJSDoc = require('swagger-jsdoc');
 
 const swaggerDefinition = {
   openapi: '3.0.0',
   info: {
-    title: 'Express API for JSONPlaceholder',
-    version: '1.0.0',
+    title: 'Documentation of Express API',
   },
 };
 
@@ -27,6 +26,7 @@ const options = {
 
 const swaggerSpec = swaggerJSDoc(options);
 
+//setup app express
 var app = express();
 
 //swagger setup
