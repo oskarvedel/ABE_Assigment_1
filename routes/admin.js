@@ -5,7 +5,8 @@ const authorize = require('authorize')
 const jwt = require('express-jwt');
 const auth = jwt({
     secret: process.env.JWT_SECRET,
-    requestProperty: 'payload'
+    requestProperty: 'payload',
+    algorithms: ['HS256']
 });
 
 /**
