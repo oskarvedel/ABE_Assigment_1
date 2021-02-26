@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Role = require('../roles');
 
 const managerSchema = new mongoose.Schema({
     username:{
@@ -9,7 +10,9 @@ const managerSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+
+    role:Role.HotelManager
 });
 
 module.exports = mongoose.model('Manager',managerSchema);
