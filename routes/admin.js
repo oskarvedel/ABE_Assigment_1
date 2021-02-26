@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const adminController = require('../controllers/admin');
-const authorize = require('../helpers/authorize')
+const authorize = require('authorize')
 const jwt = require('express-jwt');
 const auth = jwt({
     secret: process.env.JWT_SECRET,
