@@ -6,12 +6,8 @@ const hotel = require('../model/hotel');
 
 //Create an Hotel
 module.exports.CreateHotel = async function (req, res) {
-    try {
-        // let hotelname = req.body;
-        console.log(req.body);
-    } catch (err) {}
     let hotel = await hotelCollection.create({
-        name: req.body.hotelname
+        hotelname: req.body.hotelname
     }).catch(reason =>
         res.status(400).json({
             "title": "Unable to create an hotel",
