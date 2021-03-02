@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 const hotelReservationController = require('../controllers/hotelReservation');
+
+/*
 const authorize = require('../authorize')
 const jwt = require('express-jwt');
 const Role = require('../roles');
@@ -10,6 +12,7 @@ const auth = jwt({
     requestProperty: 'payload',
     algorithms: ['HS256']
 });
+
 
 /**
  * @swagger
@@ -34,6 +37,8 @@ const auth = jwt({
  *                         type: string
  *                         description: The hotels's name.
  *                         example: Hilton
+ *   post:
+ *     summary: Adds a hotel to the system
  */
 router.route('')
         .get(hotelReservationController.GetAllHotels)

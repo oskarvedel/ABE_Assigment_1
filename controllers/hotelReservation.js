@@ -4,20 +4,18 @@ const saltRounds = 10;
 const hotelCollection = require('../model/hotel');
 const hotel = require('../model/hotel');
 
-//Create an Admin
-module.exports.CreateAdmin = async function (req, res) {
-    let admin = await adminCollection.create({
-        name: req.body.username,
-        password: req.body.password,
+module.exports.CreateHotel = async function (req, res) {
+    let hotel = await hotelCollection.create({
+        name: req.body.hotelname,
     }).catch(reason =>
         res.status(400).json({
             "title": "Unable to create an Admin",
             "detail": reason
         })
     );
-    if (admin)
+    if (hotel)
         res.status(201).json({
-            admin
+            hotel
         })
     else {
         res.status(500).json({
