@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const hotelReservationController = require('../controllers/hotelReservation');
+var hotelReservationController = require('../controllers/hotelReservation');
 const authorize = require('../authorize')
 const jwt = require('express-jwt');
 const Role = require('../roles');
@@ -35,6 +35,7 @@ const auth = jwt({
  *                         description: The hotels's name.
  *                         example: Hilton
  */
+/*
 router.route('')
         .get(hotelReservationController.GetAllAdmins)
         .post(hotelReservationController.CreateAdmin);
@@ -44,9 +45,10 @@ router.route('/:adminid')
     .delete(authorize(Role.Admin), auth, hotelReservationController.DeleteAdminById)
 
 
+*/
 
-
-router.route('')
-    .get(hotelReservationController.GetAllHotels);
+router.route('/hotel')
+    .get(hotelReservationController.GetAllHotels)
+    .post(hotelReservationController.CreateHotel);
 
 module.exports = router;    

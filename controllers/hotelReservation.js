@@ -1,21 +1,21 @@
 const userCollection = require('../model/user');
+const hotelCollection = require('../model/hotel');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
 //Create an Admin
-module.exports.CreateAdmin = async function (req, res) {
-    let admin = await adminCollection.create({
-        name: req.body.username,
-        password: req.body.password,
+module.exports.CreateHotel = async function (req, res) {
+    let hotel = await hotelCollection.create({
+        name: req.body.hotelname,
     }).catch(reason =>
         res.status(400).json({
             "title": "Unable to create an Admin",
             "detail": reason
         })
     );
-    if (admin)
+    if (hotel)
         res.status(201).json({
-            admin
+            hotel
         })
     else {
         res.status(500).json({
@@ -26,7 +26,7 @@ module.exports.CreateAdmin = async function (req, res) {
 
 //Get all hotels
 module.exports.GetAllHotels = async function (req, res) {
-    let hotels = ["Hilton"]
+    let hotels = await hotelCollection.find({})
         .catch(reason =>
             res.status(400).json({
                 "title": "Unable to find any Hotels from the database",
@@ -37,7 +37,7 @@ module.exports.GetAllHotels = async function (req, res) {
         hotels
     })
 };
-
+/*
 //Returns a list of admins
 module.exports.GetAllAdmins = async function (req, res) {
     let admins = await userCollection.find({})
@@ -117,4 +117,4 @@ module.exports.Login = async function (req, res) {
             "detail": err
         })
     }
-}
+}*/
