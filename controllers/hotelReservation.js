@@ -35,16 +35,18 @@ module.exports.GetAllHotels = async function (req, res) {
 
 //Signs up a new user
 module.exports.SignUp = async function (req, res) {
-    try {
-        let username = req.params.userName;
-        let plainTextPassword = req.params.password;
-        res.status(200).send();
-    } catch (err) {
+    let user = await userCollection.create({
+        username: req.body.username,
+        password: req.body.password
+    }).catch(reason =>
         res.status(400).json({
-            "title": "Unable to delete admin from the database",
-            "detail": err
+            "title": "Unable to create an user",
+            "detail": reason
         })
-    };
+    );
+    res.status(201).json({
+        user
+    });
 }
 
 //Lets a user log in
