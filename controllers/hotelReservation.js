@@ -4,8 +4,9 @@ const saltRounds = 10;
 
 //Create an Admin
 module.exports.CreateAdmin = async function (req, res) {
-    let admin = await userCollection.create({
-        //admin data
+    let admin = await adminCollection.create({
+        name: req.body.username,
+        password: req.body.password,
     }).catch(reason =>
         res.status(400).json({
             "title": "Unable to create an Admin",
