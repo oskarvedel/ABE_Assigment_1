@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 const hotelReservationController = require('../controllers/hotelReservation');
 
-/*
 const authorize = require('../authorize')
 const jwt = require('express-jwt');
 const Role = require('../roles');
@@ -48,10 +47,10 @@ router.route('/:adminid')
     .get(authorize(Role.Admin), auth, hotelReservationController.getAdminById)
     .delete(authorize(Role.Admin), auth, hotelReservationController.DeleteAdminById)
 
-
-
-
 router.route('/hotel')
-    .get(hotelReservationController.GetAllHotels);
+    .get(hotelReservationController.GetAllHotels)
+
+router.route('/createHotel')
+    .post(hotelReservationController.CreateHotel);
 
 module.exports = router;    

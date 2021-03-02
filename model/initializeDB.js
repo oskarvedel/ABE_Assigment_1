@@ -1,8 +1,31 @@
 const userCollection = require('../model/user');
 const hotelCollection = require('../model/hotel');
 const roomCollection = require('../model/hotel');
-const { Mongoose } = require('mongoose');
+const {
+    Mongoose
+} = require('mongoose');
 
-mongoose.model('User',userSchema);
+//Returns a list of admins
+module.exports.initializeDB = function () {
 
-const Loc = mongoose
+    userCollection.remove({}, function (err) {
+        console.log('collection removed')
+    });
+
+    roomCollection.remove({}, function (err) {
+        console.log('collection removed')
+    });
+
+    hotelCollection.remove({}, function (err) {
+        console.log('collection removed')
+    });
+
+    userCollection.create({
+        username: 'Admin',
+        password: 'Admin',
+        role: 'Admin'
+    }, function (err, User) {
+        if (err) return handleError(err);
+        // saved!
+    });
+};
