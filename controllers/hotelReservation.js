@@ -6,17 +6,21 @@ const hotel = require('../model/hotel');
 
 //Create an Hotel
 module.exports.CreateHotel = async function (req, res) {
-    let hotel = await hotelCollection.create({
-        name: req.body.hotelname
-    }).catch(reason =>
-        res.status(400).json({
-            "title": "Unable to create an hotel",
-            "detail": reason
-        })
-    );
-        res.status(201).json({
-            hotel
-        });
+    try {
+        // let hotelname = req.body;
+        console.log(req.body);
+    } catch (err) {}
+    // let hotel = await hotelCollection.create({
+    //     name: req.body.hotelname
+    // }).catch(reason =>
+    //     res.status(400).json({
+    //         "title": "Unable to create an hotel",
+    //         "detail": reason
+    //     })
+    // );
+    res.status(201).json({
+        hotel
+    });
 };
 
 //Get all hotels
@@ -85,7 +89,7 @@ module.exports.SignUp = async function (req, res) {
     try {
         let username = req.params.userName;
         let plainTextPassword = req.params.password;
-        bcrypt.hash(plainTextPassword,saltRounds).then(function(hash){
+        bcrypt.hash(plainTextPassword, saltRounds).then(function (hash) {
 
         })
         res.status(200).send();
@@ -102,7 +106,7 @@ module.exports.Login = async function (req, res) {
     try {
         let username = req.params.userName;
         let plainTextPassword = req.params.password;
-        bcrypt.hash(plainTextPassword,saltRounds).then(function(hash){
+        bcrypt.hash(plainTextPassword, saltRounds).then(function (hash) {
 
         })
         res.status(200).send();
