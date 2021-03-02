@@ -100,15 +100,15 @@ module.exports.SignUp = async function (req, res) {
 //Lets a user log in
 module.exports.Login = async function (req, res) {
     try {
-        let username = req.body.username
+        let loginname = req.body.username
         let plainTextPassword = req.params.password;
-        bcrypt.hash(plainTextPassword, saltRounds).then(function (hash) {
-
-        })
-        res.status(200).send();
+        await userCollection.findOne({username: loginname, password: plainTextPassword})
+        res.status(200).json({
+            "title": "you logged in :D"
+        });
     } catch (err) {
         res.status(400).json({
-            "title": "Unable to delete admin from the database",
+            "title": "Unable to login",
             "detail": err
         })
     }
