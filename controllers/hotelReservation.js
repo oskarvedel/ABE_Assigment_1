@@ -4,9 +4,16 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
 //Create an Admin
+<<<<<<< HEAD
 module.exports.CreateHotel = async function (req, res) {
     let hotel = await hotelCollection.create({
         name: req.body.hotelname,
+=======
+module.exports.CreateAdmin = async function (req, res) {
+    let admin = await userCollection.create({
+        name: req.body.username,
+        password: req.body.password,
+>>>>>>> 0b4dcf81d26bc037cd2ae78ef9d91be933fa2db6
     }).catch(reason =>
         res.status(400).json({
             "title": "Unable to create an Admin",

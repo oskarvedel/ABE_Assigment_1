@@ -11,6 +11,17 @@ const auth = jwt({
     algorithms: ['HS256']
 });
 
+
+router.route('')
+        .get(hotelReservationController.GetAllAdmins)
+        .post(hotelReservationController.CreateAdmin);
+
+router.route('/:adminid')
+    .get(authorize(Role.Admin), auth, hotelReservationController.getAdminById)
+    .delete(authorize(Role.Admin), auth, hotelReservationController.DeleteAdminById)
+
+
+
 /**
  * @swagger
  * /hotels:
@@ -37,6 +48,7 @@ const auth = jwt({
  */
 /*
 router.route('')
+<<<<<<< HEAD
         .get(hotelReservationController.GetAllAdmins)
         .post(hotelReservationController.CreateAdmin);
 
@@ -50,5 +62,8 @@ router.route('/:adminid')
 router.route('/hotel')
     .get(hotelReservationController.GetAllHotels)
     .post(hotelReservationController.CreateHotel);
+=======
+    .get(hotelReservationController.GetAllHotels);
+>>>>>>> 0b4dcf81d26bc037cd2ae78ef9d91be933fa2db6
 
 module.exports = router;    

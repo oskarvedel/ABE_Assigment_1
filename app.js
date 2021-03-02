@@ -5,6 +5,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const cors = require('cors')
 
 require('./model/db');
 
@@ -26,7 +27,7 @@ const swaggerDefinition = {
 const options = {
   swaggerDefinition,
   // Paths to files containing OpenAPI definitions
-  apis: ['./routes/*.js','./controllers/*.js'],
+  apis: ['./routes/*.js'],
 };
 
 const swaggerSpec = swaggerJSDoc(options);
@@ -35,6 +36,9 @@ const swaggerSpec = swaggerJSDoc(options);
 var app = express();
 
 //swagger setup
+app.use(cors());
+app.use('/', indexRouter);
+app.use('/user', usersRouter);
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 
@@ -48,9 +52,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+<<<<<<< HEAD
 app.use('/', indexRouter);
 app.use('/user', userRouter);
 
+=======
+>>>>>>> 0b4dcf81d26bc037cd2ae78ef9d91be933fa2db6
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
