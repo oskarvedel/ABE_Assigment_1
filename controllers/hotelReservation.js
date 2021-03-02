@@ -1,8 +1,6 @@
 const userCollection = require('../model/user');
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
 const hotelCollection = require('../model/hotel');
-const hotel = require('../model/hotel');
+const jwt = require('jsonwebtoken');
 
 //Create an Hotel
 module.exports.CreateHotel = async function (req, res) {
@@ -51,14 +49,17 @@ module.exports.SignUp = async function (req, res) {
 
 //Lets a user log in
 module.exports.Login = async function (req, res) {
-    await userCollection.find({"username": req.body.username, "password": req.body.password})
-     .catch(reason =>
-         res.status(400).json({
-                "title": "Unable to login",
-                "detail": reason
-           })
-     );
-     res.status(200).json({
-            "title": "you logged in :D"
-    });
+    let user = await userCollection.findOne({"username": req.body.username, "password": req.body.password
+    }).catch(reason =>
+        res.status(400).json({
+            "title": "Unable to login",
+            "detail": reason
+        })
+    );
+    if(user)
+    {
+        res.status(200).json({
+            "title": "you logged in :D",
+     });
+    }
 }
