@@ -11,6 +11,17 @@ const auth = jwt({
     algorithms: ['HS256']
 });
 
+
+router.route('')
+        .get(hotelReservationController.GetAllAdmins)
+        .post(hotelReservationController.CreateAdmin);
+
+router.route('/:adminid')
+    .get(authorize(Role.Admin), auth, hotelReservationController.getAdminById)
+    .delete(authorize(Role.Admin), auth, hotelReservationController.DeleteAdminById)
+
+
+
 /**
  * @swagger
  * /hotels:
@@ -35,17 +46,6 @@ const auth = jwt({
  *                         description: The hotels's name.
  *                         example: Hilton
  */
-router.route('')
-        .get(hotelReservationController.GetAllAdmins)
-        .post(hotelReservationController.CreateAdmin);
-
-router.route('/:adminid')
-    .get(authorize(Role.Admin), auth, hotelReservationController.getAdminById)
-    .delete(authorize(Role.Admin), auth, hotelReservationController.DeleteAdminById)
-
-
-
-
 router.route('')
     .get(hotelReservationController.GetAllHotels);
 
