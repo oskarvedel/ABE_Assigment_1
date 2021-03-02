@@ -49,17 +49,24 @@ module.exports.SignUp = async function (req, res) {
 
 //Lets a user log in
 module.exports.Login = async function (req, res) {
-    let user = await userCollection.findOne({"username": req.body.username, "password": req.body.password
-    }).catch(reason =>
-        res.status(400).json({
-            "title": "Unable to login",
-            "detail": reason
-        })
-    );
-    if(user)
-    {
-        res.status(200).json({
-            "title": "you logged in :D",
-     });
+
+    let user = await userCollection.findOne({'username': req.body.username}).exec();
+
+    if (user.password == req.body.password) {
+        res.status(200).send();
     }
+
+    // try {
+    //     var userr = userCollection.find({
+    //         'username': req.body.username
+    //     });
+    //     if (userr.select(password) == req.body.password) {
+    //         res.status(200).send();
+    //     }
+    // } catch (err) {
+    //     res.status(400).json({
+    //         "title": "Unable to login",
+    //         "detail": err
+    //     })
+    // }
 }

@@ -75,6 +75,6 @@ router.route('/signUp')
     .post(hotelReservationController.SignUp);
 
 router.route('/login')
-    .get(hotelReservationController.Login);
+    .post(hotelReservationController.Login);
 
 module.exports = router;
