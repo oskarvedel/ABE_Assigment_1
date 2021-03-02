@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const adminController = require('../controllers/hotelReservation');
+const hotelReservationController = require('../controllers/hotelReservation');
 const authorize = require('../authorize')
 const jwt = require('express-jwt');
 const Role = require('../roles');
@@ -18,8 +18,8 @@ const auth = jwt({
  *     summary: test
  *     description: test
 */
-router.route('').get(authorize(Role.Admin), auth, hotelReservationController.GetAllAdmins)
-        .post(authorize(Role.Admin), auth, hotelReservationController.CreateAdmin);
+router.route('').get(authorize(Role.Admin), auth,hotelReservationController.GetAllAdmins)
+        .post(authorize(Role.Admin), auth,hotelReservationController.CreateAdmin);
 
 router.route('/:adminid')
     .get(authorize(Role.Admin), auth, hotelReservationController.getAdminById)

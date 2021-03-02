@@ -1,4 +1,4 @@
-const adminCollection = require('../model/admin');
+const adminCollection = require('../model/user');
 
 //Create an Admin
 module.exports.CreateAdmin = async function (req, res) {
