@@ -36,9 +36,9 @@ module.exports.GetAllHotels = async function (req, res) {
 };
 
 //Gets a specific hotel
-module.exports.getHotelById = async function (req, res) {
+module.exports.getHotelByHotelName = async function (req, res) {
     try {
-        const hotel = await hotelCollection.findById(req.params.hotelId);
+        const hotel = await hotelCollection.findById(req.params.hotelname);
         if (hotel) {
             res.status(200).json({
                 hotel
@@ -55,10 +55,9 @@ module.exports.getHotelById = async function (req, res) {
 }
 
 //Deletes a specific hotel
-module.exports.DeleteHotelById = async function (req, res) {
+module.exports.DeleteHotelByHotelName = async function (req, res) {
     try {
-        //Need to add real hotel id
-        await hotelCollection.findByIdAndDelete(req.params.hotelId);
+        await hotelCollection.findByIdAndDelete(req.params.hotelname);
         res.status(200).send();
     } catch (err) {
         res.status(400).json({

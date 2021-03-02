@@ -36,9 +36,9 @@ module.exports.GetAllUsers = async function (req, res) {
 };
 
 //Gets a specific user
-module.exports.getUserById = async function (req, res) {
+module.exports.getUserByUserName = async function (req, res) {
     try {
-        const user = await userCollection.findById(req.params.userId);
+        const user = await userCollection.findById(req.params.username);
         if (user) {
             res.status(200).json({
                 user
@@ -58,7 +58,7 @@ module.exports.getUserById = async function (req, res) {
 module.exports.deleteUserById = async function (req, res) {
     try {
         //Need to add real admin id
-        await userCollection.findByIdAndDelete(req.params.userId);
+        await userCollection.findByIdAndDelete(req.params.username);
         res.status(200).send();
     } catch (err) {
         res.status(400).json({
