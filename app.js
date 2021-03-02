@@ -13,7 +13,7 @@ var bodyParser = require('body-parser')
 require('./model/db');
 
 var indexRouter = require('./routes/index');
-var userRouter = require('./routes/user');
+var apiRouter = require('./routes/api');
 
 
 //swagger setup
@@ -43,7 +43,7 @@ app.use(express.urlencoded());
 //swagger setup
 app.use(cors());
 app.use('/', indexRouter);
-app.use('/user', userRouter);
+app.use('/api', apiRouter);
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 
@@ -55,9 +55,6 @@ app.use(logger('dev'));
 
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', indexRouter);
-app.use('/user', userRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

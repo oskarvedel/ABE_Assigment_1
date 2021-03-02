@@ -40,7 +40,7 @@ const auth = jwt({
  *   post:
  *     summary: Adds a hotel to the system
  */
-router.route('')
+router.route('/')
         .get(hotelReservationController.GetAllHotels)
         .post(hotelReservationController.CreateHotel);
 
