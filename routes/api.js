@@ -16,7 +16,7 @@ const auth = jwt({
 
 /**
  * @swagger
- * /getHotels:
+ * /api/getHotels:
  *   get:
  *     summary: Retrieve the list of hotels
  *     description: Retrieve a list of hotels.
@@ -43,7 +43,7 @@ router.route('/getHotels')
 
 /**
  * @swagger
- * /hotels:
+ * /api/createHotel:
  *   post:
  *     summary: Add a hotel to the system
  *     description: adds a hotel to the system
@@ -71,7 +71,7 @@ router.route('/createHotel')
 
 /**
  * @swagger
- * /signUp:
+ * /api/signUp:
  *   post:
  *     summary: SignUp for the hotel system
  *     description: Register an user
@@ -93,7 +93,7 @@ router.route('/signUp')
 
     /**
  * @swagger
- * /login:
+ * /api/login:
  *   post:
  *     summary: login
  *     description: Login to the system

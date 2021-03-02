@@ -44,7 +44,6 @@ app.use(express.urlencoded());
 app.use(cors());
 app.use('/', indexRouter);
 app.use('/api', apiRouter, swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 
 // view engine setup
