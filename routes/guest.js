@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const adminController = require('../controllers/guest');
+const guestController = require('../controllers/guest');
 const authorize = require('../authorize')
 const jwt = require('express-jwt');
 const Role = require('../roles');

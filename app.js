@@ -9,7 +9,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var adminRouter = require('./routes/admin');
-var guestRouter = require(' ./routes/guest')
+var guestRouter = require('./routes/guest')
 
 //swagger setup
 var swaggerUi = require('swagger-ui-express');
