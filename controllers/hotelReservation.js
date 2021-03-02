@@ -36,7 +36,7 @@ module.exports.GetAllHotels = async function (req, res) {
         hotels
     })
 };
-
+/*
 //Returns a list of admins
 module.exports.GetAllAdmins = async function (req, res) {
     let admins = await userCollection.find({})
@@ -116,4 +116,4 @@ module.exports.Login = async function (req, res) {
             "detail": err
         })
     }
-}
+}*/
