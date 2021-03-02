@@ -25,4 +25,10 @@ module.exports.initializeDB = function () {
         password: 'Admin',
         role: 'Admin'
     });
+
+    userCollection.create({
+        username: 'User',
+        password: 'User',
+        role: 'User'
+    });
 };
