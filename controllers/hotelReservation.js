@@ -49,9 +49,6 @@ module.exports.SignUp = async function (req, res) {
 
 //Lets a user log in
 module.exports.Login = async function (req, res) {
-
-
-
     try {
         let user = await userCollection.findOne({
             'username': req.body.username
