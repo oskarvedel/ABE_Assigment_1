@@ -4,7 +4,7 @@ const saltRounds = 10;
 
 //Create an Admin
 module.exports.CreateAdmin = async function (req, res) {
-    let admin = await adminCollection.create({
+    let admin = await userCollection.create({
         name: req.body.username,
         password: req.body.password,
     }).catch(reason =>
