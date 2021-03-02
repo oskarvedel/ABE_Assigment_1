@@ -24,8 +24,5 @@ module.exports.initializeDB = function () {
         username: 'Admin',
         password: 'Admin',
         role: 'Admin'
-    }, function (err, User) {
-        if (err) return handleError(err);
-        // saved!
     });
 };
