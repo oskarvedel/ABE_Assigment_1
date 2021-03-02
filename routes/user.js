@@ -13,11 +13,28 @@ const auth = jwt({
 
 /**
  * @swagger
- * /admin:
+ * /hotels:
  *   get:
- *     summary: test
- *     description: test
-*/
+ *     summary: Retrieve the list of hotels
+ *     description: Retrieve a list of hotels.
+ *     responses:
+ *       200:
+ *         description: A list of hotels.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       name:
+ *                         type: string
+ *                         description: The hotels's name.
+ *                         example: Hilton
+ */
 router.route('')
         .get(hotelReservationController.GetAllAdmins)
         .post(hotelReservationController.CreateAdmin);
@@ -25,5 +42,11 @@ router.route('')
 router.route('/:adminid')
     .get(authorize(Role.Admin), auth, hotelReservationController.getAdminById)
     .delete(authorize(Role.Admin), auth, hotelReservationController.DeleteAdminById)
+
+
+
+
+router.route('')
+    .get(hotelReservationController.GetAllHotels);
 
 module.exports = router;    

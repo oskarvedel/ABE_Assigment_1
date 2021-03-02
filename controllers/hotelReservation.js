@@ -24,6 +24,20 @@ module.exports.CreateAdmin = async function (req, res) {
     };
 };
 
+//Get all hotels
+module.exports.GetAllHotels = async function (req, res) {
+    let hotels = ["Hilton"]
+        .catch(reason =>
+            res.status(400).json({
+                "title": "Unable to find any Hotels from the database",
+                "detail": reason
+            })
+        );
+    res.status(200).json({
+        hotels
+    })
+};
+
 //Returns a list of admins
 module.exports.GetAllAdmins = async function (req, res) {
     let admins = await userCollection.find({})
@@ -102,5 +116,5 @@ module.exports.Login = async function (req, res) {
             "title": "Unable to delete admin from the database",
             "detail": err
         })
-    };
+    }
 }
