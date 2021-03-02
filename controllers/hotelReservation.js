@@ -1,6 +1,8 @@
-const userCollection = require('../model/user');
+const adminCollection = require('../model/user');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
+const hotelCollection = require('../model/hotel');
+const hotel = require('../model/hotel');
 
 //Create an Admin
 module.exports.CreateAdmin = async function (req, res) {
@@ -26,7 +28,7 @@ module.exports.CreateAdmin = async function (req, res) {
 
 //Get all hotels
 module.exports.GetAllHotels = async function (req, res) {
-    let hotels = ["Hilton"]
+    let hotels = await hotelCollection.find({})
         .catch(reason =>
             res.status(400).json({
                 "title": "Unable to find any Hotels from the database",
@@ -36,6 +38,22 @@ module.exports.GetAllHotels = async function (req, res) {
     res.status(200).json({
         hotels
     })
+};
+
+//Create an Hotel
+module.exports.CreateHotel = async function (req, res) {
+    let hotel = await hotelCollection.create({
+        name: req.body.hotelname
+    }).catch(reason =>
+        res.status(400).json({
+            "title": "Unable to create an hotel",
+            "detail": reason
+        })
+    );
+        res.status(201).json({
+            hotel
+        });
+        
 };
 
 //Returns a list of admins

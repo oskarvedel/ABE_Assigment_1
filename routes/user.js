@@ -36,8 +36,8 @@ const auth = jwt({
  *                         example: Hilton
  */
 router.route('')
-        .get(hotelReservationController.GetAllAdmins)
-        .post(hotelReservationController.CreateAdmin);
+        .get(hotelReservationController.GetAllHotels)
+        .post(hotelReservationController.CreateHotel);
 
 router.route('/:adminid')
     .get(authorize(Role.Admin), auth, hotelReservationController.getAdminById)
@@ -46,7 +46,7 @@ router.route('/:adminid')
 
 
 
-router.route('')
+router.route('/hotel')
     .get(hotelReservationController.GetAllHotels);
 
 module.exports = router;    
