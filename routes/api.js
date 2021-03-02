@@ -68,4 +68,6 @@ router.route('/getHotels')
 router.route('/createHotel')
         .post(auth, hotelReservationController.CreateHotel);
 
-module.exports = router;    
+router.route('/createUser')
+    .post(hotelReservationController.CreateHotel);
+module.exports = router;

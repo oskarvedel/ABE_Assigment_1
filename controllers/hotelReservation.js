@@ -100,7 +100,7 @@ module.exports.SignUp = async function (req, res) {
 //Lets a user log in
 module.exports.Login = async function (req, res) {
     try {
-        let username = req.params.userName;
+        let username = req.body.username
         let plainTextPassword = req.params.password;
         bcrypt.hash(plainTextPassword, saltRounds).then(function (hash) {
 
