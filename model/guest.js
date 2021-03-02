@@ -12,7 +12,9 @@ const guestSchema = new mongoose.Schema({
         required: true
     },
 
-    role:Role.Guest
+    role:{
+        type: String
+    }
 });
 
 module.exports = mongoose.model('Guest',guestSchema);
