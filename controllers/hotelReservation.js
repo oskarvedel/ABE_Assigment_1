@@ -116,4 +116,5 @@ module.exports.Login = async function (req, res) {
             "title": "Unable to delete admin from the database",
             "detail": err
         })
-    };
+    }
+}
