@@ -108,7 +108,7 @@ module.exports.Login = async function (req, res) {
         }
     } catch (err) {
         res.status(400).json({
-            "title": "Unable to delete admin from the database",
+            "title": "Unable to login",
             "detail": err
         })
     }

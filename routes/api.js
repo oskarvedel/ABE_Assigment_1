@@ -70,10 +70,11 @@ router.route('/createHotel')
 
 router.route('/createUser')
     .post(hotelReservationController.CreateHotel);
-module.exports = router;
 
 router.route('/signUp')
     .post(hotelReservationController.SignUp);
 
 router.route('/login')
-    .post(hotelReservationController.Login);
+    .get(hotelReservationController.Login);
+
+module.exports = router;
