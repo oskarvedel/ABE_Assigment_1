@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Role = require('../roles')
+const Role = require('../roles');
 
 const adminSchema = new mongoose.Schema({
     username:{
@@ -12,7 +12,10 @@ const adminSchema = new mongoose.Schema({
         required: true
     },
 
-    role:Role.Admin
+    role:{
+        type: String
+    }
+
 });
 
 module.exports = mongoose.model('Admin',adminSchema);

@@ -1,6 +1,5 @@
 require ('dotenv').config();
 
-const bcrypt = require('bcrypt');
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -9,7 +8,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var adminRouter = require('./routes/admin')
+var adminRouter = require('./routes/admin');
 
 //swagger setup
 var swaggerUi = require('swagger-ui-express');
