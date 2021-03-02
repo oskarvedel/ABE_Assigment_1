@@ -43,7 +43,7 @@ app.use(express.urlencoded());
 //swagger setup
 app.use(cors());
 app.use('/', indexRouter);
-app.use('/api', apiRouter);
+app.use('/api', apiRouter, swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 
