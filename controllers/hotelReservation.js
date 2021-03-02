@@ -35,7 +35,8 @@ module.exports.GetAllHotels = async function (req, res) {
 module.exports.SignUp = async function (req, res) {
     let user = await userCollection.create({
         username: req.body.username,
-        password: req.body.password
+        password: req.body.password,
+        role: "User"
     }).catch(reason =>
         res.status(400).json({
             "title": "Unable to create an user",

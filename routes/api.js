@@ -16,7 +16,7 @@ const auth = jwt({
 
 /**
  * @swagger
- * /hotels:
+ * /getHotels:
  *   get:
  *     summary: Retrieve the list of hotels
  *     description: Retrieve a list of hotels.
@@ -39,14 +39,14 @@ const auth = jwt({
  *                         example: Hilton
  */
 router.route('/getHotels')
-        .get(hotelReservationController.GetAllHotels)
+        .get(authorize(Role.User), hotelReservationController.GetAllHotels)
 
 /**
  * @swagger
  * /hotels:
  *   post:
  *     summary: Add a hotel to the system
- *     description: adds a hotel to the system - needs to be administrator
+ *     description: adds a hotel to the system
  *     responses:
  *       201:
  *         description: Hotel created
@@ -66,14 +66,50 @@ router.route('/getHotels')
  *                         example: Hilton
  */
 router.route('/createHotel')
-        .post(auth, hotelReservationController.CreateHotel);
+        .post(authorize(Role.Admin), auth, hotelReservationController.CreateHotel);
 
-router.route('/createUser')
-    .post(hotelReservationController.CreateHotel);
 
+/**
+ * @swagger
+ * /signUp:
+ *   post:
+ *     summary: SignUp for the hotel system
+ *     description: Register an user
+ *     responses:
+ *       201:
+ *         description: User Created
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 user:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ */
 router.route('/signUp')
     .post(hotelReservationController.SignUp);
 
+    /**
+ * @swagger
+ * /login:
+ *   post:
+ *     summary: login
+ *     description: Login to the system
+ *     responses:
+ *       200:
+ *         description: Logged in
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 jwt:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ */
 router.route('/login')
     .post(hotelReservationController.Login);
 
