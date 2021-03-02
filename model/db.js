@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
 let dbconn = 'mongodb://localhost:27017/hotelReservation';
+if (process.env.NODE_ENV === 'production') {
+    dbURI = process.env.MONGODB_URI;
+    }
 
 
 mongoose.connect(dbconn, {
