@@ -1,34 +1,22 @@
-const userCollection = require('../model/user');
-const hotelCollection = require('../model/hotel');
+const adminCollection = require('../model/user');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
+const hotelCollection = require('../model/hotel');
+const hotel = require('../model/hotel');
 
-//Create an Admin
-<<<<<<< HEAD
+//Create an Hotel
 module.exports.CreateHotel = async function (req, res) {
     let hotel = await hotelCollection.create({
-        name: req.body.hotelname,
-=======
-module.exports.CreateAdmin = async function (req, res) {
-    let admin = await userCollection.create({
-        name: req.body.username,
-        password: req.body.password,
->>>>>>> 0b4dcf81d26bc037cd2ae78ef9d91be933fa2db6
+        name: req.body.hotelname
     }).catch(reason =>
         res.status(400).json({
-            "title": "Unable to create an Admin",
+            "title": "Unable to create an hotel",
             "detail": reason
         })
     );
-    if (hotel)
         res.status(201).json({
             hotel
-        })
-    else {
-        res.status(500).json({
-            "title": "ETERNAL SERVER ERROR"
-        })
-    };
+        });
 };
 
 //Get all hotels
