@@ -18,8 +18,9 @@ const auth = jwt({
  *     summary: test
  *     description: test
 */
-router.route('').get(authorize(Role.Admin), auth,hotelReservationController.GetAllAdmins)
-        .post(authorize(Role.Admin), auth,hotelReservationController.CreateAdmin);
+router.route('')
+        .get(hotelReservationController.GetAllAdmins)
+        .post(hotelReservationController.CreateAdmin);
 
 router.route('/:adminid')
     .get(authorize(Role.Admin), auth, hotelReservationController.getAdminById)

@@ -3,7 +3,8 @@ const adminCollection = require('../model/user');
 //Create an Admin
 module.exports.CreateAdmin = async function (req, res) {
     let admin = await adminCollection.create({
-        //admin data
+        name: req.body.username,
+        password: req.body.password,
     }).catch(reason =>
         res.status(400).json({
             "title": "Unable to create an Admin",
