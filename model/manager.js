@@ -12,7 +12,9 @@ const managerSchema = new mongoose.Schema({
         required: true
     },
 
-    role:Role.HotelManager
+    role:{
+        type: String
+    }
 });
 
 module.exports = mongoose.model('Manager',managerSchema);
