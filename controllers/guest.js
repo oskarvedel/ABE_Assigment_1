@@ -1,7 +1,7 @@
 const guestCollection = require('../model/guest');
 
 //Create a guest
-module.exports.createGuest = async function (req, res) {
+module.exports.CreateGuest = async function (req, res) {
     let guest = await guestCollection.create({
         //guest data
     }).catch(reason =>
