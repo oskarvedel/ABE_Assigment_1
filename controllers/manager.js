@@ -1,9 +1,9 @@
 const managerCollection = require('../model/manager');
 
-//Create an Admin
+//Create a manager
 module.exports.CreateManager = async function (req, res) {
     let manager = await managerCollection.create({
-        //admin data
+        //manager data
     }).catch(reason =>
         res.status(400).json({
             "title": "Unable to create a manager",
@@ -21,7 +21,7 @@ module.exports.CreateManager = async function (req, res) {
     };
 };
 
-//Returns a list of admins
+//Returns a list of managers
 module.exports.GetAllManagers = async function (req, res) {
     const managers = await managerCollection.find({})
         .catch(reason =>
@@ -35,29 +35,29 @@ module.exports.GetAllManagers = async function (req, res) {
     })
 };
 
-//Gets a specific admin
-module.exports.getAdminById = async function (req, res) {
+//Gets a specific manager
+module.exports.getManagerById = async function (req, res) {
     try {
         const manager = await managerCollection.findById(req.params.managerid);
         if (manager) {
             res.status(200).json({
-                admin
+                manager
             })
         } else {
             throw ("Manager not found");
         }
     } catch (err) {
         res.status(400).json({
-            "title": "Unable to find admin from the database",
+            "title": "Unable to find manager from the database",
             "detail": err
         })
     };
 }
 
-//Deletes a specific admin
+//Deletes a specific manager
 module.exports.DeleteManagerById = async function (req, res) {
     try {
-        //Need to add real admin id
+        //Need to add real manager id
         await managerCollection.findByIdAndDelete(req.params.managerid);
         res.status(200).send();
     } catch (err) {
