@@ -41,8 +41,11 @@ const auth = jwt({
  *     summary: Adds a hotel to the system
  */
 router.route('/')
-        .get(hotelReservationController.GetAllHotels)
-        .post(hotelReservationController.CreateHotel);
+    .get(hotelReservationController.GetAllHotels)
+    .post(hotelReservationController.CreateHotel);
+
+router.route('/login')
+    .post(hotelReservationController.Login);
 
 router.route('/:adminid')
     .get(authorize(Role.Admin), auth, hotelReservationController.getAdminById)
@@ -54,4 +57,6 @@ router.route('/hotel')
 router.route('/createHotel')
     .post(hotelReservationController.CreateHotel);
 
-module.exports = router;    
+router.route('/createUser')
+    .post(hotelReservationController.CreateHotel);
+module.exports = router;
