@@ -2,6 +2,7 @@ const hotelCollection = require('../model/hotel');
 
 //Create an hotel
 module.exports.CreateHotel = async function (req, res) {
+    const manager=
     let hotel = await hotelCollection.create({
         //hotel data
     }).catch(reason =>

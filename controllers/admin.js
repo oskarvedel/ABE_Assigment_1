@@ -23,7 +23,7 @@ module.exports.CreateAdmin = async function (req, res) {
 
 //Returns a list of admins
 module.exports.GetAllAdmins = async function (req, res) {
-    const admins = await adminCollection.find({})
+    let admins = await adminCollection.find({})
         .catch(reason =>
             res.status(400).json({
                 "title": "Unable to find any admins from the database",
