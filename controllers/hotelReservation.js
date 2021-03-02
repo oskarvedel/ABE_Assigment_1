@@ -52,9 +52,6 @@ module.exports.Login = async function (req, res) {
 
     let user = await userCollection.findOne({'username': req.body.username}).exec();
 
-    console.log(user.username);
-    console.log(user.password);
-
     if (user.password == req.body.password) {
         res.status(200).send();
     }
