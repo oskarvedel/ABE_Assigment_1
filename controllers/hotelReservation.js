@@ -46,7 +46,6 @@ module.exports.SignUp = async function (req, res) {
         user
     });
 }
-
 //Lets a user log in
 module.exports.Login = async function (req, res) {
     try {
@@ -55,8 +54,9 @@ module.exports.Login = async function (req, res) {
         }).exec();
 
         if (user.password == req.body.password) {
+            const token = jwt.sign({ username: user.username, role: user.role }, process.env.JWT_SECRET);
             res.status(201).json({
-                user
+                token
             });}
     } catch (err) {
         res.status(400).json({
