@@ -1,4 +1,4 @@
-const adminCollection = require('../model/user');
+const userCollection = require('../model/user');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const hotelCollection = require('../model/hotel');
@@ -38,9 +38,6 @@ module.exports.SignUp = async function (req, res) {
     try {
         let username = req.params.userName;
         let plainTextPassword = req.params.password;
-        bcrypt.hash(plainTextPassword, saltRounds).then(function (hash) {
-
-        })
         res.status(200).send();
     } catch (err) {
         res.status(400).json({
@@ -52,17 +49,27 @@ module.exports.SignUp = async function (req, res) {
 
 //Lets a user log in
 module.exports.Login = async function (req, res) {
-    try {
-        var user = userCollection.find({
-            'username': req.body.username
-        });
-        if (user.select(password) == req.body.password) {
-            res.status(200).send();
-        }
-    } catch (err) {
-        res.status(400).json({
-            "title": "Unable to login",
-            "detail": err
-        })
+
+    let user = await userCollection.findOne({'username': req.body.username}).exec();
+
+    console.log(user.username);
+    console.log(user.password);
+
+    if (user.password == req.body.password) {
+        res.status(200).send();
     }
+
+    // try {
+    //     var userr = userCollection.find({
+    //         'username': req.body.username
+    //     });
+    //     if (userr.select(password) == req.body.password) {
+    //         res.status(200).send();
+    //     }
+    // } catch (err) {
+    //     res.status(400).json({
+    //         "title": "Unable to login",
+    //         "detail": err
+    //     })
+    // }
 }
