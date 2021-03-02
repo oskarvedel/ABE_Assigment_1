@@ -1,9 +1,8 @@
-const userCollection = require('../model/user');
+const adminCollection = require('../model/user');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const hotelCollection = require('../model/hotel');
 const hotel = require('../model/hotel');
-
 
 //Create an Hotel
 module.exports.CreateHotel = async function (req, res) {
@@ -83,29 +82,30 @@ module.exports.DeleteAdminById = async function (req, res) {
 
 //Signs up a new user
 module.exports.SignUp = async function (req, res) {
-    let user = await userCollection.create({
-        username: req.body.username,
-        password: req.body.password
-    }).catch(reason =>
-        res.status(400).json({
-            "title": "Unable to create a user",
-            "detail": reason
-        })
-    );
-    res.status(201).json({
-        user
-    });
-}
-
-//Lets a user log in
-module.exports.Login = async function (req, res) {
     try {
-        let username = req.body.username
+        let username = req.params.userName;
         let plainTextPassword = req.params.password;
         bcrypt.hash(plainTextPassword, saltRounds).then(function (hash) {
 
         })
         res.status(200).send();
+    } catch (err) {
+        res.status(400).json({
+            "title": "Unable to delete admin from the database",
+            "detail": err
+        })
+    };
+}
+
+//Lets a user log in
+module.exports.Login = async function (req, res) {
+    try {
+        var user = userCollection.find({
+            'username': req.body.username
+        });
+        if (user.select(password) == req.body.password) {
+            res.status(200).send();
+        }
     } catch (err) {
         res.status(400).json({
             "title": "Unable to delete admin from the database",

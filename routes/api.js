@@ -74,3 +74,6 @@ module.exports = router;
 
 router.route('/signUp')
     .post(hotelReservationController.SignUp);
+
+router.route('/login')
+    .post(hotelReservationController.Login);
