@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 const hotelReservationController = require('../controllers/hotelReservation');
+
+/*
 const authorize = require('../authorize')
 const jwt = require('express-jwt');
 const Role = require('../roles');
@@ -10,16 +12,6 @@ const auth = jwt({
     requestProperty: 'payload',
     algorithms: ['HS256']
 });
-
-
-router.route('')
-        .get(hotelReservationController.GetAllAdmins)
-        .post(hotelReservationController.CreateAdmin);
-
-router.route('/:adminid')
-    .get(authorize(Role.Admin), auth, hotelReservationController.getAdminById)
-    .delete(authorize(Role.Admin), auth, hotelReservationController.DeleteAdminById)
-
 
 
 /**
@@ -45,8 +37,12 @@ router.route('/:adminid')
  *                         type: string
  *                         description: The hotels's name.
  *                         example: Hilton
+ *   post:
+ *     summary: Adds a hotel to the system
  */
-router.route('')
-    .get(hotelReservationController.GetAllHotels);
+router.route('/hotels')
+    .get(hotelReservationController.GetAllHotels)
+    .post(hotelReservationController.CreateHotel);
+
 
 module.exports = router;    
