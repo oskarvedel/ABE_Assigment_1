@@ -37,21 +37,35 @@ const auth = jwt({
  *                         type: string
  *                         description: The hotels's name.
  *                         example: Hilton
- *   post:
- *     summary: Adds a hotel to the system
  */
-router.route('/')
+router.route('/getHotels')
         .get(hotelReservationController.GetAllHotels)
-        .post(hotelReservationController.CreateHotel);
 
-router.route('/:adminid')
-    .get(authorize(Role.Admin), auth, hotelReservationController.getAdminById)
-    .delete(authorize(Role.Admin), auth, hotelReservationController.DeleteAdminById)
-
-router.route('/hotel')
-    .get(hotelReservationController.GetAllHotels)
-
+/**
+ * @swagger
+ * /hotels:
+ *   post:
+ *     summary: Add a hotel to the system
+ *     description: adds a hotel to the system - needs to be administrator
+ *     responses:
+ *       201:
+ *         description: Hotel created
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       name:
+ *                         type: string
+ *                         description: The hotels's name.
+ *                         example: Hilton
+ */
 router.route('/createHotel')
-    .post(hotelReservationController.CreateHotel);
+        .post(auth, hotelReservationController.CreateHotel);
 
 module.exports = router;    
