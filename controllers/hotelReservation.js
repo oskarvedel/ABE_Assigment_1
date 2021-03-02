@@ -10,14 +10,14 @@ module.exports.CreateHotel = async function (req, res) {
         // let hotelname = req.body;
         console.log(req.body);
     } catch (err) {}
-    // let hotel = await hotelCollection.create({
-    //     name: req.body.hotelname
-    // }).catch(reason =>
-    //     res.status(400).json({
-    //         "title": "Unable to create an hotel",
-    //         "detail": reason
-    //     })
-    // );
+    let hotel = await hotelCollection.create({
+        name: req.body.hotelname
+    }).catch(reason =>
+        res.status(400).json({
+            "title": "Unable to create an hotel",
+            "detail": reason
+        })
+    );
     res.status(201).json({
         hotel
     });
@@ -36,7 +36,7 @@ module.exports.GetAllHotels = async function (req, res) {
         hotels
     })
 };
-/*
+
 //Returns a list of admins
 module.exports.GetAllAdmins = async function (req, res) {
     let admins = await userCollection.find({})
@@ -116,4 +116,4 @@ module.exports.Login = async function (req, res) {
             "detail": err
         })
     }
-}*/
+}

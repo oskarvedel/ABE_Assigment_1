@@ -1,8 +1,6 @@
 var express = require('express');
 var router = express.Router();
-<<<<<<< HEAD
-var hotelReservationController = require('../controllers/hotelReservation');
-=======
+
 const hotelReservationController = require('../controllers/hotelReservation');
 
 const authorize = require('../authorize')
