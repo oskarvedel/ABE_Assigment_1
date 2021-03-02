@@ -27,9 +27,6 @@ process.on('SIGINT', () => {
     });
 });
 
-require('./admin');
-require('./guest');
 require('./hotel');
-require('./manager');
 require('./room');
 require('./user');

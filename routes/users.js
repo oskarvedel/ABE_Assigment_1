@@ -18,11 +18,11 @@ const auth = jwt({
  *     summary: test
  *     description: test
 */
-router.route('').get(authorize(Role.Admin), auth, adminController.GetAllAdmins)
-        .post(authorize(Role.Admin), auth, adminController.CreateAdmin);
+router.route('').get(authorize(Role.Admin), auth, hotelReservationController.GetAllAdmins)
+        .post(authorize(Role.Admin), auth, hotelReservationController.CreateAdmin);
 
 router.route('/:adminid')
-    .get(authorize(Role.Admin), auth, adminController.getAdminById)
-    .delete(authorize(Role.Admin), auth, adminController.DeleteAdminById)
+    .get(authorize(Role.Admin), auth, hotelReservationController.getAdminById)
+    .delete(authorize(Role.Admin), auth, hotelReservationController.DeleteAdminById)
 
 module.exports = router;    
