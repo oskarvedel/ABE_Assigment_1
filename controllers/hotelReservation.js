@@ -99,17 +99,16 @@ module.exports.SignUp = async function (req, res) {
 
 //Lets a user log in
 module.exports.Login = async function (req, res) {
-    try {
-        let loginname = req.body.username
-        let plainTextPassword = req.params.password;
-        await userCollection.findOne({username: loginname, password: plainTextPassword})
-        res.status(200).json({
+    let loginname = req.body.username
+    let plainTextPassword = req.body.password;
+    await userCollection.find({username: loginname, password: plainTextPassword})
+     .catch(reason =>
+         res.status(400).json({
+                "title": "Unable to login",
+                "detail": reason
+           })
+     );
+     res.status(200).json({
             "title": "you logged in :D"
-        });
-    } catch (err) {
-        res.status(400).json({
-            "title": "Unable to login",
-            "detail": err
-        })
-    }
+    });
 }
